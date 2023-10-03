@@ -1,11 +1,15 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const setNumber = await ethers.deployContract("SeNumber", []);
+  const setPassCode = await ethers.deployContract("SetPassCode", [
+    "MumbaiCode",
+  ]);
 
-  await setNumber.waitForDeployment();
+  await setPassCode.waitForDeployment();
 
-  console.log(`SetNumber Contract deployed to ${setNumber.target} on Mumbai`);
+  console.log(
+    `SetPassCode Contract deployed to ${setPassCode.target} on Mumbai`
+  );
 }
 
 // We recommend this pattern to be able to use async/await everywhere
