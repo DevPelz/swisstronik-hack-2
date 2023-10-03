@@ -12,7 +12,7 @@ contract SeNumber {
         favNum = _newFavNum;
     }
 
-    function getFavNum() external returns (uint256) {
+    function getFavNum() external view returns (uint256) {
         return favNum;
     }
 }
