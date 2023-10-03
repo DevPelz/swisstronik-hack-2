@@ -1,18 +1,24 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
-contract SeNumber {
-    uint256 private favNum;
+contract SetPassCode {
+    string private passCode;
 
-    constructor() {
-        favNum = 20;
+    constructor(string memory _passCode) {
+        passCode = _passCode;
     }
 
-    function setFavNum(uint256 _newFavNum) external {
-        favNum = _newFavNum;
+    function setNewCode(string memory _newCode) external {
+        if (
+            keccak256(abi.encodePacked(passCode)) ==
+            keccak256(abi.encodePacked(_newCode))
+        ) {
+            revert("Pass code already exists");
+        }
+        passCode = _newCode;
     }
 
-    function getFavNum() external view returns (uint256) {
-        return favNum;
+    function getCode() external view returns (string memory) {
+        return passCode;
     }
 }
